@@ -4,7 +4,7 @@ var mkdirp = require('mkdirp');
 var path = require('path');
 var rimraf = require('rimraf');
 
-var requireVersion = require('../');
+var versionRequire = require('../');
 module.exports = {
   setUp: function (cb) {
     var basePath = path.join(__dirname, 'versions');
@@ -28,11 +28,11 @@ module.exports = {
     test.expect(2);
 
     test.throws(function () {
-      requireVersion('./foo');
+      versionRequire('./foo');
     }, 'Invalid path did not raise exception.');
 
     test.throws(function () {
-      requireVersion('./empty');
+      versionRequire('./empty');
     }, 'Empty directory did not raise exception.');
 
     test.done();
@@ -41,7 +41,7 @@ module.exports = {
     try {
     test.expect(3);
 
-    var reqV = requireVersion('./versions');
+    var reqV = versionRequire('./versions');
 
     test.equal(typeof reqV, 'function', 'Require function expected.');
     test.equal(typeof reqV.resolve, 'function', 'Resolve function expected.');
@@ -53,7 +53,7 @@ module.exports = {
   fallback: function (test) {
     test.expect(2);
 
-    var reqV = requireVersion('./versions');
+    var reqV = versionRequire('./versions');
 
     reqV('v2', 'test');
     reqV('v1.1', 'test');
@@ -75,7 +75,7 @@ module.exports = {
   cache: function (test) {
     test.expect(1);
 
-    var reqV = requireVersion('./versions');
+    var reqV = versionRequire('./versions');
 
     var first = reqV.resolve('v1', 'test');
     var second = reqV.resolve('v1', 'test');
@@ -86,7 +86,7 @@ module.exports = {
   unsupportedVersion: function (test) {
     test.expect(1);
 
-    var reqV = requireVersion('./versions');
+    var reqV = versionRequire('./versions');
 
     test.throws(function () {
       reqV('v4', 'test');
@@ -97,7 +97,7 @@ module.exports = {
   missingModule: function (test) {
     test.expect(1);
 
-    var reqV = requireVersion('./versions');
+    var reqV = versionRequire('./versions');
 
     test.throws(function () {
       reqV('v1', 'foo');

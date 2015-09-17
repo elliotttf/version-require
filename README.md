@@ -1,7 +1,7 @@
-# Require Version
+# Version Require
 
-[![Build Status](https://travis-ci.org/elliotttf/require-version.svg?branch=master)](https://travis-ci.org/elliotttf/require-version)
-[![Coverage Status](https://coveralls.io/repos/elliotttf/require-version/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/require-version?branch=master)
+[![Build Status](https://travis-ci.org/elliotttf/version-require.svg?branch=master)](https://travis-ci.org/elliotttf/version-require)
+[![Coverage Status](https://coveralls.io/repos/elliotttf/version-require/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/version-require?branch=master)
 
 This module allows you to require a given version of a file, and to fall back
 to a previous version if the targeted version does not exist.
@@ -18,7 +18,7 @@ to a previous version if the targeted version does not exist.
  *   - v3.1
  *     - show.js
  */
-var requireModels = require('require-version')('./models');
+var requireModels = require('version-require')('./models');
 
 // Load v3 of video.
 var video3 = requireModels('v3', 'video');

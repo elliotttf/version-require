@@ -1,5 +1,5 @@
 {
-  "name": "require-version",
+  "name": "version-require",
   "version": "1.0.0",
   "description": "Require a version of a given file",
   "main": "lib/require.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elliotttf/require-version.git"
+    "url": "git+https://github.com/elliotttf/version-require.git"
   },
   "keywords": [
     "require",
@@ -17,9 +17,9 @@
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elliotttf/require-version/issues"
+    "url": "https://github.com/elliotttf/version-require/issues"
   },
-  "homepage": "https://github.com/elliotttf/require-version#readme",
+  "homepage": "https://github.com/elliotttf/version-require#readme",
   "devDependencies": {
     "ghooks": "^0.3.2",
     "gulp": "^3.8.8",
