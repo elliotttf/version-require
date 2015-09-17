@@ -1,5 +1,6 @@
 # Require Version
 
+[![Build Status](https://travis-ci.org/elliotttf/require-version.svg?branch=master)](https://travis-ci.org/elliotttf/require-version)
 [![Coverage Status](https://coveralls.io/repos/elliotttf/require-version/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/require-version?branch=master)
 
 This module allows you to require a given version of a file, and to fall back
