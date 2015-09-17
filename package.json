@@ -1,0 +1,44 @@
+{
+  "name": "require-version",
+  "version": "1.0.0",
+  "description": "Require a version of a given file",
+  "main": "lib/require.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elliotttf/require-version.git"
+  },
+  "keywords": [
+    "require",
+    "version"
+  ],
+  "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elliotttf/require-version/issues"
+  },
+  "homepage": "https://github.com/elliotttf/require-version#readme",
+  "devDependencies": {
+    "ghooks": "^0.3.2",
+    "gulp": "^3.8.8",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-eslint": "^1.0.0",
+    "gulp-istanbul": "^0.8.1",
+    "gulp-nodeunit": "0.0.5",
+    "mkdirp": "^0.5.1",
+    "nodeunit": "^0.9.0",
+    "rimraf": "^2.4.3"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "gulp lint",
+      "pre-push": "gulp test"
+    }
+  },
+  "dependencies": {
+    "callsite": "^1.0.0",
+    "version-comparison": "^1.0.1"
+  }
+}
