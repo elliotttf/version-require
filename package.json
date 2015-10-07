@@ -1,6 +1,6 @@
 {
   "name": "version-require",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Require a version of a given file",
   "main": "lib/require.js",
   "scripts": {
@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "callsite": "1.0.0",
-    "version-comparison": "1.0.1"
+    "version-comparison": "1.0.2"
   }
 }
