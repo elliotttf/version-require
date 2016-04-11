@@ -51,14 +51,20 @@ module.exports = {
     } catch (e) { console.log(e); }
   },
   fallback: function (test) {
-    test.expect(2);
+    test.expect(3);
 
     var reqV = versionRequire('./versions');
 
+    reqV('v3', 'test');
     reqV('v2', 'test');
     reqV('v1.1', 'test');
     reqV('v1', 'test');
 
+    test.equal(
+      reqV.cache['v3::test'],
+      reqV.cache['v1::test'],
+      'Version 3 did not use version 1.'
+    );
     test.equal(
       reqV.cache['v2::test'],
       reqV.cache['v1::test'],
@@ -89,7 +95,7 @@ module.exports = {
     var reqV = versionRequire('./versions');
 
     test.throws(function () {
-      reqV('v4', 'test');
+      reqV('v0.1', 'test');
     }, 'Unsupported version did not raise exception.');
 
     test.done();
