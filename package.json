@@ -1,6 +1,6 @@
 {
   "name": "version-require",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Require a version of a given file",
   "main": "lib/require.js",
   "scripts": {
