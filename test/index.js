@@ -9,10 +9,12 @@ module.exports = {
   setUp: function (cb) {
     var basePath = path.join(__dirname, 'versions');
     mkdirp(path.join(basePath, 'v1'), function () {
-      fs.writeFile(path.join(basePath, 'v1', 'test.js'), '', function (err) {
-        mkdirp(path.join(basePath, 'v1.1'), function () {
-          mkdirp(path.join(basePath, 'v2'), function () {
-            mkdirp(path.join(__dirname, 'empty'), cb);
+      fs.writeFile(path.join(basePath, 'test.js'), '', function (err) {
+        fs.writeFile(path.join(basePath, 'v1', 'test.js'), '', function (err) {
+          mkdirp(path.join(basePath, 'v1.1'), function () {
+            mkdirp(path.join(basePath, 'v2'), function () {
+              mkdirp(path.join(__dirname, 'empty'), cb);
+            });
           });
         });
       });
