@@ -29,7 +29,7 @@
     "ghooks": "^1.2.4",
     "istanbul": "^0.4.3",
     "mkdirp": "^0.5.1",
-    "nodeunit": "^0.9.1",
+    "nodeunit": "^0.10.2",
     "rimraf": "^2.4.3"
   },
   "config": {
