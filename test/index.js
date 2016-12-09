@@ -1,18 +1,20 @@
 'use strict';
-var fs = require('fs');
-var mkdirp = require('mkdirp');
-var path = require('path');
-var rimraf = require('rimraf');
 
-var versionRequire = require('../');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
+const path = require('path');
+const rimraf = require('rimraf');
+
+const versionRequire = require('../');
+
 module.exports = {
-  setUp: function (cb) {
-    var basePath = path.join(__dirname, 'versions');
-    mkdirp(path.join(basePath, 'v1'), function () {
-      fs.writeFile(path.join(basePath, 'test.js'), '', function (err) {
-        fs.writeFile(path.join(basePath, 'v1', 'test.js'), '', function (err) {
-          mkdirp(path.join(basePath, 'v1.1'), function () {
-            mkdirp(path.join(basePath, 'v2'), function () {
+  setUp(cb) {
+    const basePath = path.join(__dirname, 'versions');
+    mkdirp(path.join(basePath, 'v1'), () => {
+      fs.writeFile(path.join(basePath, 'test.js'), '', () => {
+        fs.writeFile(path.join(basePath, 'v1', 'test.js'), '', () => {
+          mkdirp(path.join(basePath, 'v1.1'), () => {
+            mkdirp(path.join(basePath, 'v2'), () => {
               mkdirp(path.join(__dirname, 'empty'), cb);
             });
           });
@@ -20,42 +22,40 @@ module.exports = {
       });
     });
   },
-  tearDown: function (cb) {
-    rimraf(path.join(__dirname, 'versions'), function () {
+  tearDown(cb) {
+    rimraf(path.join(__dirname, 'versions'), () => {
       rimraf(path.join(__dirname, 'empty'), cb);
     });
   },
 
-  invalidPaths: function (test) {
+  invalidPaths(test) {
     test.expect(2);
 
-    test.throws(function () {
+    test.throws(() => {
       versionRequire('./foo');
     }, 'Invalid path did not raise exception.');
 
-    test.throws(function () {
+    test.throws(() => {
       versionRequire('./empty');
     }, 'Empty directory did not raise exception.');
 
     test.done();
   },
-  validPaths: function (test) {
-    try {
+  validPaths(test) {
     test.expect(3);
 
-    var reqV = versionRequire('./versions');
+    const reqV = versionRequire('./versions');
 
     test.equal(typeof reqV, 'function', 'Require function expected.');
     test.equal(typeof reqV.resolve, 'function', 'Resolve function expected.');
     test.equal(typeof reqV.cache, 'object', 'Cache object expected.');
 
     test.done();
-    } catch (e) { console.log(e); }
   },
-  fallback: function (test) {
+  fallback(test) {
     test.expect(3);
 
-    var reqV = versionRequire('./versions');
+    const reqV = versionRequire('./versions');
 
     reqV('v3', 'test');
     reqV('v2', 'test');
@@ -65,53 +65,50 @@ module.exports = {
     test.equal(
       reqV.cache['v3::test'],
       reqV.cache['v1::test'],
-      'Version 3 did not use version 1.'
-    );
+      'Version 3 did not use version 1.');
     test.equal(
       reqV.cache['v2::test'],
       reqV.cache['v1::test'],
-      'Version 2 did not use version 1.'
-    );
+      'Version 2 did not use version 1.');
     test.equal(
       reqV.cache['v1.1::test'],
       reqV.cache['v1::test'],
-      'Version 1.1 did not use version 1.'
-    );
+      'Version 1.1 did not use version 1.');
 
     test.done();
   },
-  cache: function (test) {
+  cache(test) {
     test.expect(1);
 
-    var reqV = versionRequire('./versions');
+    const reqV = versionRequire('./versions');
 
-    var first = reqV.resolve('v1', 'test');
-    var second = reqV.resolve('v1', 'test');
+    const first = reqV.resolve('v1', 'test');
+    const second = reqV.resolve('v1', 'test');
 
     test.equal(first, second, 'Cached value not equivalent.');
     test.done();
   },
-  unsupportedVersion: function (test) {
+  unsupportedVersion(test) {
     test.expect(1);
 
-    var reqV = versionRequire('./versions');
+    const reqV = versionRequire('./versions');
 
-    test.throws(function () {
+    test.throws(() => {
       reqV('v0.1', 'test');
     }, 'Unsupported version did not raise exception.');
 
     test.done();
   },
-  missingModule: function (test) {
+  missingModule(test) {
     test.expect(1);
 
-    var reqV = versionRequire('./versions');
+    const reqV = versionRequire('./versions');
 
-    test.throws(function () {
+    test.throws(() => {
       reqV('v1', 'foo');
     }, 'Missing module did not raise exception.');
 
     test.done();
-  }
+  },
 };
 
