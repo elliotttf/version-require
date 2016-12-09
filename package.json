@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "callsite": "^1.0.0",
-    "version-comparison": "^1.0.3"
+    "version-comparison": "^2.0.0"
   },
   "engines": {
     "node": ">=0.12"
