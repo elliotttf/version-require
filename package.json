@@ -33,7 +33,7 @@
     "istanbul": "^0.4.3",
     "mkdirp": "^0.5.1",
     "nodeunit": "^0.10.2",
-    "rimraf": "^2.4.3",
+    "rimraf": "^2.5.1",
     "semantic-release": "^6.3.2"
   },
   "config": {
